@@ -25,6 +25,10 @@ phases:
       # Update the AWS Partition, AWS Region, account ID and project ID in the project ARN on template-configuration.json file so AWS CloudFormation can tag project resources.
       - sed -i.bak 's/\$PARTITION\$/'${PARTITION}'/g;s/\$AWS_REGION\$/'${AWS_REGION}'/g;s/\$ACCOUNT_ID\$/'${ACCOUNT_ID}'/g;s/\$PROJECT_ID\$/'${PROJECT_ID}'/g' template-configuration.json
 
+  post-build:
+    commands:
+      - echo In post build phase
+      
   reports:
    TestReport: # CodeBuild will create a report group called "TestReport".
     files: #Store all of the files
